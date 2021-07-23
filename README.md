@@ -11,19 +11,20 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas as informações aqui detalhadas. Das Empresas  serão armazenados o id, CPF ou CNPJ, e-mail e senha. Dos Estacionamentos serão armazenados o id, nome, quantidade de vagas, CEP, nome da rua, número da rua, id do bairro e o id empresa. Dos Bairros serão armazenados o id e o nome do bairro. Os dados relativos às Vagas que serão armazenadas são: id da vaga, id do estacionamento, a condição da vaga, placa do carro, hora de entrada, quantidade de horas definidas e a hora prevista. Dado que a condição da vaga pode ser 0 (desocupada) ou 1 (ocupada) e a hora prevista é dada com base na quantidade de horas definidas e na hora de entrada.
 
 <h3>3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)</h3>
-  <p>(inserir pdf)</p>
+  <p><a href="/arquivos/mockup-web.pdf">Mockup Web</a></p>
   <h4>3.1.QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?</h4>
-  <p>O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:</n>
-Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.</n>
-Relatório com a quantidade média de horas que os carros costumam definir.</n>
-Relatório com os horários de maior e menor fluxo de veículos de cada estacionamento, incluindo as seguintes informações: id da empresa, nome do estacionamento, horário de menor fluxo, horário de maior fluxo.</n>
-Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.</n>
-Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.</p>
-
+  <p>O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:</p>
+  <ul>
+    <li>Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.</li>
+    <li>Relatório com a quantidade média de horas que os carros costumam definir.</li>
+    <li>Relatório com os horários de maior e menor fluxo de veículos de cada estacionamento, incluindo as seguintes informações: id da empresa, nome do estacionamento, horário de menor fluxo, horário de maior fluxo.</li>
+    <li>Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.</li>
+    <li>Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.</li>
+  </ul>
 <h3>4.TABELA DE DADOS DO SISTEMA</h3>
-  <p></p>
+  <p>(inserir tabela)</p>
 <h3>5.PMC</h3>
-  <p></p>
+  <p>(inserir imagem)</p>
 <h3>6.MODELO CONCEITUAL</h3>
   <p></p>
 <h3>7.MODELO LÓGICO</h3>
