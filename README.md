@@ -8,7 +8,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   Lara Aguilar de Amorim: lara.aguilar2003@gmail.com</p>
   
 <h3>2.MINIMUNDO</h3>
-O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas as informações aqui detalhadas. Das Empresas  serão armazenados o id, CPF ou CNPJ, e-mail e senha. Dos Estacionamentos serão armazenados o id, nome, quantidade de vagas, CEP, nome da rua, número da rua, id do bairro e o id empresa. Dos Bairros serão armazenados o id e o nome do bairro. Os dados relativos às Vagas que serão armazenadas são: id da vaga, id do estacionamento, a condição da vaga, placa do carro, hora de entrada, quantidade de horas definidas e a hora prevista. Dado que a condição da vaga pode ser 0 (desocupada) ou 1 (ocupada) e a hora prevista é dada com base na quantidade de horas definidas e na hora de entrada.
+<p>O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas as informações aqui detalhadas. Das Empresas  serão armazenados o id, CPF ou CNPJ, e-mail e senha. Dos Estacionamentos serão armazenados o id, nome, quantidade de vagas, CEP, nome da rua, número da rua, id do bairro e o id empresa. Dos Bairros serão armazenados o id e o nome do bairro. Os dados relativos às Vagas que serão armazenadas são: id da vaga, id do estacionamento, a condição da vaga, placa do carro, hora de entrada, quantidade de horas definidas e a hora prevista. Dado que a condição da vaga pode ser 0 (desocupada) ou 1 (ocupada) e a hora prevista é dada com base na quantidade de horas definidas e na hora de entrada.</p>
 
 <h3>3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)</h3>
   <p><a href="/arquivos/mockup-web.pdf">Mockup Web</a></p>
@@ -22,13 +22,13 @@ O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas
     <li>Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.</li>
   </ul>
 <h3>4.TABELA DE DADOS DO SISTEMA</h3>
-  <p>(inserir tabela)</p>
+  <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
 <h3>5.PMC</h3>
-  <p>(inserir imagem)</p>
+  <p><img src="/arquivos/PMC-v.1.0.png" alt="Project Model Canvas"></p>
 <h3>6.MODELO CONCEITUAL</h3>
-  <p></p>
+  <p><img src="/arquivos/modelo_conceitual.png" alt="Modelo conceitual"></p>
 <h3>7.MODELO LÓGICO</h3>
-  <p></p>
+  <p><img src="/arquivos/modelo_logico.png" alt="Modelo lógico"></p>
 <h3>8.MODELO FÍSICO</h3>
   <p></p>
 <h3>9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS</h3>
