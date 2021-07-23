@@ -12,6 +12,14 @@ O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas
 
 <h3>3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)</h3>
   <p>(inserir pdf)</p>
+  <h4>3.1.QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?</h4>
+  <p>O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:</n>
+Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.</n>
+Relatório com a quantidade média de horas que os carros costumam definir.</n>
+Relatório com os horários de maior e menor fluxo de veículos de cada estacionamento, incluindo as seguintes informações: id da empresa, nome do estacionamento, horário de menor fluxo, horário de maior fluxo.</n>
+Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.</n>
+Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.</p>
+
 <h3>4.TABELA DE DADOS DO SISTEMA</h3>
   <p></p>
 <h3>5.PMC</h3>
