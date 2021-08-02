@@ -37,49 +37,96 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 8.MODELO FÍSICO
   <p>
   
-    INSERT INTO Bairro
-    VALUES (1, 'Jardim da Penha'),
-            (2, 'SÃ£o Pedro'),
-            (3, 'Ilha das Caieiras'),
-            (4, 'Jardim Camburi'),
-            (5, 'Praia do Canto');
+      CREATE TABLE Empresa (
+          idEmpresa int PRIMARY KEY,
+          dscCpfCnpj varchar(45) not null,
+          Email varchar(45) not null,
+          Senha varchar(45) not null
+        );
 
-    INSERT INTO Empresa
-    VALUES (1, '04.236.475/0001-32', 'vixpark@gmail.com', 'esYSXMdYyzQH'),
-            (2, '34.353.384/0001-48', 'instaEmpresa@gmail.com', 'YkKjfxThEwDf'),
-            (3, '229.802.280-10', 'parky.estacionamentos@hotmail.com', 'kqfcvGATSESk'),
-            (4, '586.685.070-28', 'neyestacionamentos@outlook.com', 'rYbCNgNBUfvd');
+      CREATE TABLE Estacionamento (
+          idEstacionamento int PRIMARY KEY,
+          NomeEstacionamento varchar(45) not null,
+          qtdVagas smallint not null,
+          CEP varchar(45),
+          Rua varchar(45),
+          numRua int,
+          fk_Empresa_idEmpresa int,
+          fk_Bairro_idBairro int
+        );
 
-    insert into Estacionamento (idestacionamento, nomeestacionamento, qtdvagas, cep, rua, numrua, fk_bairro_idbairro, fk_empresa_idempresa)
-    Values(1, 'Vixpark Estacionamento', 4, '29047-035', 'Rua Orácio Cândido dos Santos', '540', 1, 1),
-        (2, 'Instapark', 4, '29030-065', 'Travessa Canindé', '345', 2, 2),
-        (3, 'Parky Estacionamento', 5, '29032-106', 'Rua Vista Linda', '781', 3, 3),
-        (4, 'Estacioney', 5, '29027-160', 'Rua Lucidato Vieira Falcão', '201', 4, 4),
-        (5, 'RotaPark', 4, '29050-227', 'Travessa do Tabual', '321', 5, 4);
+      CREATE TABLE Vagas (
+          idVaga int PRIMARY KEY,
+          condVaga bit not null,
+          PlacaCarro varchar(45),
+          hrEntrada timestamp,
+          qtdHrs time,
+          HRSaidaPrevista timestamp
+        );
 
-    insert into Vagas (idvaga, idEstacionamento, condvaga, placacarro, hrentrada, qtdhrs, hrsaidaprevista)
-    values (1, 1, '0',  null, '09-07-2021 09:51:01', '08:00:00', '09/07/2021 17:51:01'),
-    (2,	1, '1', 'MHU9745' ,'10/07/2021 09:51:01',	'11:00:00'	,'10/07/2021 20:51:01'),
-    (3,	1,	'0',	null,	'11/07/2021 09:51:01',	'04:00:00',	'11/07/2021 13:51:01'), 
-    (4,	1,	'1',	'JPK8L12',	'12/07/2021 09:51:01',	'01:00:00',	'12/07/2021 10:51:01'),
-    (5,	2,	'0',	null,	null,	null,	null),
-    (6,	2,	'0',	null,	null,	null,	null),
-    (7,	2,	'1',	'KDJ3268',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-    (8,	2,	'1',	'JTT2569',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-    (9,	3,	'0',	null,	null,	null,	null),
-    (10,3,	'0',	null,	null,	null,	null),
-    (11,3,	'1',	'DNS7891',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-    (12,3,	'0',	null,	null,	null,	null),
-    (13,3,	'0',	null,	null,	null,	null),
-    (14,4,	'1',	'NCO7561',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
-    (15,4,	'1',	'SHA1546',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
-    (16,4,	'1',	'CNA4523',	'10/07/2021 09:51:01',	'13:00:00', '10/07/2021 22:51:01'),
-    (17,4,	'1',	'RPW4925',	'10/07/2021 09:51:01',	'14:00:00',	'10/07/2021 23:51:01'),
-    (18,4,	'1',	'CAP3614',	'10/07/2021 09:51:01',	'15:00:00',	'11/07/2021 00:51:01'),
-    (19,5,	'0',	null,	null,	null,	null),
-    (20,5,	'0',	null,	null,	null,	null),
-    (21,5,	'1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-    (22,5,	'0',	null,	null,	null,	null);
+      CREATE TABLE Bairro (
+          idBairro int PRIMARY KEY,
+          dscBairro varchar(45) not null
+        );
+
+      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_3
+          FOREIGN KEY (fk_Empresa_idEmpresa)
+          REFERENCES Empresa (idEmpresa)
+          ON DELETE RESTRICT;
+
+      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_4
+          FOREIGN KEY (fk_Bairro_idBairro)
+          REFERENCES Bairro (idBairro)
+          ON DELETE RESTRICT;
+
+      INSERT INTO Bairro
+      VALUES (1, 'Jardim da Penha'),
+              (2, 'SÃ£o Pedro'),
+              (3, 'Ilha das Caieiras'),
+              (4, 'Jardim Camburi'),
+              (5, 'Praia do Canto');
+
+      INSERT INTO Empresa
+      VALUES (1, '04.236.475/0001-32', 'vixpark@gmail.com', 'esYSXMdYyzQH'),
+              (2, '34.353.384/0001-48', 'instaEmpresa@gmail.com', 'YkKjfxThEwDf'),
+              (3, '229.802.280-10', 'parky.estacionamentos@hotmail.com', 'kqfcvGATSESk'),
+              (4, '586.685.070-28', 'neyestacionamentos@outlook.com', 'rYbCNgNBUfvd');
+
+
+
+
+      insert into Estacionamento (idestacionamento, nomeestacionamento, qtdvagas, cep, rua, numrua, fk_bairro_idbairro, fk_empresa_idempresa)
+      Values(1, 'Vixpark Estacionamento', 4, '29047-035', 'Rua Orácio Cândido dos Santos', '540', 1, 1),
+          (2, 'Instapark', 4, '29030-065', 'Travessa Canindé', '345', 2, 2),
+          (3, 'Parky Estacionamento', 5, '29032-106', 'Rua Vista Linda', '781', 3, 3),
+          (4, 'Estacioney', 5, '29027-160', 'Rua Lucidato Vieira Falcão', '201', 4, 4),
+          (5, 'RotaPark', 4, '29050-227', 'Travessa do Tabual', '321', 5, 4);
+
+
+      insert into Vagas (idvaga, condvaga, placacarro, hrentrada, qtdhrs, hrsaidaprevista)
+      values (1, '0',  null, '09-07-2021 09:51:01', '08:00:00', '09/07/2021 17:51:01'),
+      (2, '1', 'MHU9745' ,'10/07/2021 09:51:01',	'11:00:00'	,'10/07/2021 20:51:01'),
+      (3,	'0',	null,	'11/07/2021 09:51:01',	'04:00:00',	'11/07/2021 13:51:01'), 
+      (4,	'1',	'JPK8L12',	'12/07/2021 09:51:01',	'01:00:00',	'12/07/2021 10:51:01'),
+      (5,	'0',	null,	null,	null,	null),
+      (6,	'0',	null,	null,	null,	null),
+      (7,	'1',	'KDJ3268',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
+      (8,	'1',	'JTT2569',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
+      (9,	'0',	null,	null,	null,	null),
+      (10, '0',	null,	null,	null,	null),
+      (11, '1',	'DNS7891',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
+      (12, '0',	null,	null,	null,	null),
+      (13, '0',	null,	null,	null,	null),
+      (14, '1',	'NCO7561',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
+      (15, '1',	'SHA1546',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
+      (16,	'1',	'CNA4523',	'10/07/2021 09:51:01',	'13:00:00', '10/07/2021 22:51:01'),
+      (17, '1',	'RPW4925',	'10/07/2021 09:51:01',	'14:00:00',	'10/07/2021 23:51:01'),
+      (18, '1',	'CAP3614',	'10/07/2021 09:51:01',	'15:00:00',	'11/07/2021 00:51:01'),
+      (19, '0',	null,	null,	null,	null),
+      (20, '0',	null,	null,	null,	null),
+      (21, '1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
+      (22, '0',	null,	null,	null,	null);
+
   </p>
 
 ### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
