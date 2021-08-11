@@ -6,6 +6,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   <p>Integrantes do Grupo:<br>
   Guilherme Silveira Mendes: guilhermesilveira.2015@hotmail.com<br>
   Lara Aguilar de Amorim: lara.aguilar2003@gmail.com</p>
+  XD
   
 ### 2.MINIMUNDO
 <p>O sistema proposto para o "Sistema de Controle de Estacionamento" conterá todas as informações aqui detalhadas. Das Empresas  serão armazenados o id, CPF ou CNPJ, e-mail e senha. Dos Estacionamentos serão armazenados o id, nome, quantidade de vagas, CEP, nome da rua, número da rua, id do bairro e o id empresa. Dos Bairros serão armazenados o id e o nome do bairro. Os dados relativos às Vagas que serão armazenadas são: id da vaga, id do estacionamento, a condição da vaga, placa do carro, hora de entrada, quantidade de horas definidas e a hora prevista. Dado que a condição da vaga pode ser 0 (desocupada) ou 1 (ocupada) e a hora prevista é dada com base na quantidade de horas definidas e na hora de entrada.</p>
