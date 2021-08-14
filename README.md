@@ -78,7 +78,12 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
           FOREIGN KEY (fk_Bairro_idBairro)
           REFERENCES Bairro (idBairro)
           ON DELETE RESTRICT;
+  </p>
 
+### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
+  <p>
+  
+  
       INSERT INTO Bairro
       VALUES (1, 'Jardim da Penha'),
               (2, 'SÃ£o Pedro'),
@@ -127,10 +132,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       (21, '1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
       (22, '0',	null,	null,	null,	null);
 
-  </p>
-
-### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
-  <p></p>
+</p>
 
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
   <p></p>
