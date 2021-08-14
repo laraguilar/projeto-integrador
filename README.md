@@ -153,7 +153,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   
       SELECT * FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
       
-<p><img src="/arquivos/SELECTS/1.png" alt="Relatório 1"></p>
+<p><img src="arquivos/SELECTS/1.png" alt="Relatório 1"></p>
       
  Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
  
