@@ -153,13 +153,13 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   
       SELECT * FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
       
-<p><img src="arquivos/SELECTS/1.png" alt="Relatório 1"></p>
+<p><img src="arquivos/1.png" alt="Relatório 1"></p>
       
  Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
  
       SELECT avg(qtdHrs) AS "Media Qtd Horas" FROM vagas;
       
-<p><img src="/arquivos/SELECTS/2.png" alt="Relatório 2"></p>
+<p><img src="/arquivos/2.png" alt="Relatório 2"></p>
       
  Relatório com os horários de fluxo de veículos dos estacionamento, incluindo as seguintes informações: horário, quantidade de fluxo no horario;<br>
  
@@ -168,12 +168,12 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 Relatório que informe a quantidade de estacionamentos por bairro.<br>
 
       SELECT COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY est.fk_bairro_idBairro;
-<p><img src="/arquivos/SELECTS/4.png" alt="Relatório 4"></p>
+<p><img src="/arquivos/4.png" alt="Relatório 4"></p>
     
 Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
 
       SELECT idEstacionamento, fk_empresa_idEmpresa FROM estacionamento;
-<p><img src="/arquivos/SELECTS/5.png" alt="Relatório 5"></p>  
+<p><img src="/arquivos/5.png" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
   <p></p>
