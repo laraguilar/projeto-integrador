@@ -15,12 +15,12 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   
   #### 3.1.QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
 
-  > O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:
-    *Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.
-    *Relatório com a quantidade média de horas que os carros costumam definir.
-    *Relatório com os horários de maior e menor fluxo de veículos de cada estacionamento, incluindo as seguintes informações: id da empresa, nome do estacionamento, horário de menor fluxo, horário de maior fluxo.
-    *Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.
-    *Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.
+  > O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:<br>
+    * Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.<br>
+    * Relatório com a quantidade média de horas que os carros costumam definir.<br>
+    * Relatório com os horários de maior e menor fluxo de veículos de cada estacionamento, incluindo as seguintes informações: id da empresa, nome do estacionamento, horário de menor fluxo, horário de maior fluxo.<br>
+    * Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.<br>
+    * Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
 
 ### 4.TABELA DE DADOS DO SISTEMA
   <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
@@ -149,6 +149,13 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       SELECT * FROM vagasHistorico;
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
+    Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.
+      SELECT * FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
+    
+     Relatório com a quantidade média de horas que os carros estacionados definiram no dia.
+
+      SELECT avg(qtdHrs) AS "Media Qtd Horas" FROM vagas;
+
 
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
   <p></p>
