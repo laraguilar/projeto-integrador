@@ -137,16 +137,17 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
   #### 10.1 CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS
       SELECT * FROM empresa
-      
+<p><img src="/arquivos/SELECTS/empresa.PNG" alt="Select empresa"></p>
       SELECT * FROM estacionamento
-
+<p><img src="/arquivos/SELECTS/estacionamento.PNG" alt="Select estacionamento"></p>
       SELECT * FROM bairro
-      
+ <p><img src="/arquivos/SELECTS/bairro.PNG" alt="Select bairro"></p>     
       SELECT * FROM vagas 
-
+<p><img src="/arquivos/SELECTS/vagas.PNG" alt="Select vagas"></p>
       SELECT * FROM historico_estacionamento;
-
+<p><img src="/arquivos/SELECTS/historico_estacionamento.PNG" alt="Select historico_estacionamento"></p>
       SELECT * FROM vagasHistorico;
+<p><img src="/arquivos/SELECTS/vagasHistorico.PNG" alt="Select vagasHistórico"></p>      
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
   Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.<br>
