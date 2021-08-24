@@ -37,37 +37,62 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 8.MODELO FÍSICO
   <p>
   
+      DROP TABLE IF EXISTS Empresa;
       CREATE TABLE Empresa (
           idEmpresa int PRIMARY KEY,
-          dscCpfCnpj varchar(45) not null,
-          Email varchar(45) not null,
-          Senha varchar(45) not null
-        );
+          dscCpfCnpj varchar(45),
+          Email varchar(45),
+          Senha varchar(45)
+      );
 
+      DROP TABLE IF EXISTS Estacionamento;
       CREATE TABLE Estacionamento (
           idEstacionamento int PRIMARY KEY,
-          NomeEstacionamento varchar(45) not null,
-          qtdVagas smallint not null,
+          NomeEstacionamento varchar(45),
+          qtdVagas smallint,
           CEP varchar(45),
           Rua varchar(45),
           numRua int,
+          fk_Vagas_idVaga int,
           fk_Empresa_idEmpresa int,
           fk_Bairro_idBairro int
-        );
+      );
 
+      DROP TABLE IF EXISTS Vagas;
       CREATE TABLE Vagas (
           idVaga int PRIMARY KEY,
-          condVaga bit not null,
+          condVaga bit,
           PlacaCarro varchar(45),
           hrEntrada timestamp,
           qtdHrs time,
           HRSaidaPrevista timestamp
-        );
+      );
 
+      DROP TABLE IF EXISTS Bairro;
       CREATE TABLE Bairro (
           idBairro int PRIMARY KEY,
-          dscBairro varchar(45) not null
-        );
+          dscBairro varchar(45)
+      );
+
+      DROP TABLE IF EXISTS historico_estacionamento;
+      CREATE TABLE historico_estacionamento (
+          idHistorico int PRIMARY KEY,
+          dscPlacaCarro varchar(45),
+          hrEntrada timestamp,
+          hrSaidaPrevista timestamp,
+          hrSaida timestamp
+      );
+
+      DROP TABLE IF EXISTS vagasHistorico;
+      CREATE TABLE vagasHistorico (
+          idHistorico int PRIMARY KEY,    
+          idVaga int NOT NULL
+      );
+
+      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_2
+          FOREIGN KEY (fk_Vagas_idVaga)
+          REFERENCES Vagas (idVaga)
+          ON DELETE RESTRICT;
 
       ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_3
           FOREIGN KEY (fk_Empresa_idEmpresa)
@@ -131,7 +156,71 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       (20, '0',	null,	null,	null,	null),
       (21, '1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
       (22, '0',	null,	null,	null,	null);
+      
+      INSERT INTO historico_estacionamento 
+      VALUES (1,	'HSF0850',	'2021-07-09 12:02:09',	'2021-07-09 15:02:09',	'2021-07-09 15:02:09'),
+      (2,	'NFB8592',	'2021-07-09 10:26:37',	'2021-07-09 11:26:37',	'2021-07-09 11:26:37'),
+      (3,	'JQN7059',	'2021-07-09 06:12:22',	'2021-07-09 10:12:22',	'2021-07-09 10:12:22'),
+      (4,	'MUR6823',	'2021-07-08 09:02:00',	'2021-07-08 11:02:00',	'2021-07-08 11:02:00'),
+      (5,	'NFA2145',	'2021-07-08 13:02:00',	'2021-07-09 14:02:00',	'2021-07-09 14:02:00'),
+      (6,	'MXO9426',	'2021-06-18 08:25:28',	'2021-06-18 10:25:28',	'2021-06-18 10:25:28'),
+      (7,	'NET6883',	'2021-06-21 12:07:11',	'2021-06-21 14:00:00',	'2021-06-21 14:00:00'),
+      (8,	'NET6883',	'2021-01-12 11:25:38',	'2021-01-12 14:25:38',	'2021-01-12 14:25:38'),
+      (9,	'KBX2087',	'2021-07-22 10:55:36',	'2021-07-22 11:55:36',	'2021-07-22 11:55:36'),
+      (10,	'MUO6663',	'2020-12-28 10:11:18',	'2020-12-28 11:11:18',	'2020-12-28 11:11:18'),
+      (11,	'MWV1941',	'2021-07-15 08:58:46',	'2021-07-15 13:58:46',	'2021-07-15 13:58:46'),
+      (12,	'KPQ7466',	'2021-09-01 11:49:13',	'2021-09-01 14:49:13',	'2021-09-01 14:49:13'),
+      (13,	'HWA3740',	'2021-06-10 12:47:39',	'2021-06-10 15:47:00',	'2021-06-10 15:47:00'),
+      (14,	'MFV9264',	'2021-01-06 08:17:24',	'2021-01-06 18:17:00',	'2021-01-06 18:17:00'),
+      (15,	'LWL3427',	'2021-04-13 12:51:12',	'2021-04-13 13:51:12',	'2021-04-13 13:51:12'),
+      (16,	'MXC5240',	'2021-05-26 11:46:08',	'2021-05-26 13:46:08',	'2021-05-27 13:46:08'),
+      (17,	'MNB3961',	'2021-07-07 10:46:45',	'2021-07-07 18:46:45',	'2021-07-08 17:46:45'),
+      (18,	'KBW6061',	'2020-09-15 07:40:00',	'2020-09-15 08:40:00',	'2020-09-15 08:40:00'),
+      (19,	'MUD8981',	'2020-09-29 11:24:53',	'2020-09-29 15:24:53',	'2020-09-29 15:24:53'),
+      (20,	'HTV5237',	'2021-07-08 07:00:09',	'2021-07-08 09:00:09',	'2021-07-08 09:00:09'),
+      (21,	'MWW1974',	'2021-08-20 12:35:47',	'2021-08-20 15:35:47',	'2021-08-21 15:35:47'),
+      (22,	'HZQ1381',	'2021-01-20 09:09:09',	'2021-01-20 10:09:09',	'2021-01-20 10:09:09'),
+      (23,	'NEO5813',	'2020-11-05 10:05:28',	'2020-11-05 11:05:28',	'2020-11-06 11:05:28'),
+      (24,	'MXM9004',	'2021-04-06 12:52:04',	'2021-04-06 15:52:04',	'2021-04-06 15:52:04'),
+      (25,	'NEB0273',	'2021-01-14 10:08:51',	'2021-01-14 15:10:00',	'2021-01-14 15:10:00'),
+      (26,	'HRJ7052',	'2021-07-15 11:09:52',	'2021-07-15 13:09:52',	'2021-07-15 13:09:52'),
+      (27,	'MRJ0845',	'2020-12-27 11:11:37',	'2020-12-27 16:11:37',	'2020-12-27 16:11:37'),
+      (28,	'NBW8056',	'2020-08-23 11:38:03',	'2020-08-23 16:38:03',	'2020-08-23 16:38:03'),
+      (29,	'HWT2078',	'2020-09-24 08:18:31',	'2020-09-24 10:18:31',	'2020-09-25 10:18:31'),
+      (30,	'KLQ2773',	'2021-01-23 10:46:06',	'2021-01-23 15:46:06',	'2021-01-24 15:46:06');
 
+      INSERT INTO vagasHistorico 
+      VALUES (1,	1),
+      (2,	6),
+      (3,	1),
+      (4,	2),
+      (5,	7),
+      (6,	3),
+      (7,	3),
+      (8,	5),
+      (9,	20),
+      (10,	6),
+      (11,	11),
+      (12,	12),
+      (13,	13),
+      (14,	14),
+      (15,	15),
+      (16,	16),
+      (17,	17),
+      (18,	18),
+      (19,	19),
+      (20,	2),
+      (21,	10),
+      (22, 7),
+      (23,	5),
+      (24,	10),
+      (25,	9),
+      (26, 6),
+      (27, 22),
+      (28,	21),
+      (29,	9),
+      (30,	8);
+  
       UPDATE estacionamento SET fk_bairro_idbairro = 1 WHERE idestacionamento = 5;
       UPDATE estacionamento SET cep = '29047-291', rua = 'Rua José Elias dos Reis Fraga' WHERE idEstacionamento = 5;
       
