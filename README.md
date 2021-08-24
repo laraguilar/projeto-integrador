@@ -172,7 +172,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 Relatório que informe a quantidade de estacionamentos por bairro.<br>
 
       SELECT brr.dscBairro, COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY brr.dscBairro;
-<p><img src="/arquivos/4.png" alt="Relatório 4"></p>
+<p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
     
 Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
 
