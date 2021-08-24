@@ -170,7 +170,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       
 <p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
       
- Relatório com os horários de fluxo de veículos dos estacionamento, incluindo as seguintes informações: horário, quantidade de fluxo no horario;<br>
+ Relatório com as vagas ocupadas no mês 7;<br>
  
       Não fizemos;
      
