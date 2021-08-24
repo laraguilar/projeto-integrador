@@ -132,6 +132,9 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       (21, '1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
       (22, '0',	null,	null,	null,	null);
 
+      UPDATE estacionamento SET fk_bairro_idbairro = 1 WHERE idestacionamento = 5;
+      UPDATE estacionamento SET cep = '29047-291', rua = 'Rua José Elias dos Reis Fraga' WHERE idEstacionamento = 5;
+      
 </p>
 
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
@@ -168,7 +171,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
      
 Relatório que informe a quantidade de estacionamentos por bairro.<br>
 
-      SELECT COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY est.fk_bairro_idBairro;
+      SELECT brr.dscBairro, COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY brr.dscBairro;
 <p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
     
 Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
