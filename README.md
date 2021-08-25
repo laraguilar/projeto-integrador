@@ -247,9 +247,9 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 <p><img src="/arquivos/SELECTS/vagasHistorico.PNG" alt="Select vagasHistórico"></p>      
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
-  Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.<br>
+  Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
   
-      SELECT * FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
+      SELECT dscplacacarro, extract(hour from hrsaida - hrentrada) as "TempoEstacionado" FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
       
