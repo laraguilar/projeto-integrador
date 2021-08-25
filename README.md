@@ -261,7 +261,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       
  Relatório com as vagas ocupadas no mês 7;<br>
  
-      Não fizemos;
+      SELECT * FROM historico_estacionamento WHERE EXTRACT(MONTH FROM hrentrada) = 7;
      
 Relatório que informe a quantidade de estacionamentos por bairro.<br>
 
