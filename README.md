@@ -269,9 +269,9 @@ Relatório que informe a quantidade de estacionamentos por bairro.<br>
       SELECT brr.dscBairro, COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY brr.dscBairro;
 <p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
     
-Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
+Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
-      SELECT idEstacionamento, fk_empresa_idEmpresa FROM estacionamento;
+      SELECT nomeEstacionamento, fk_empresa_idempresa FROM estacionamento;
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
