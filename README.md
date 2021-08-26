@@ -247,29 +247,29 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 <p><img src="/arquivos/SELECTS/vagasHistorico.PNG" alt="Select vagasHistórico"></p>      
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
-  Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
+  ##### 1) Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
   
       SELECT dscplacacarro, extract(hour from hrsaida - hrentrada) as "TempoEstacionado" FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
       
- Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
+ ##### 2) Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
  
       SELECT avg(qtdHrs) AS "Media Qtd Horas" FROM vagas;
       
 <p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
       
- Relatório com as vagas ocupadas no mês 7;<br>
+ ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
       SELECT * FROM historico_estacionamento WHERE EXTRACT(MONTH FROM hrentrada) = 7;
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
-Relatório que informe a quantidade de estacionamentos por bairro.<br>
+##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
 
       SELECT brr.dscBairro, COUNT(*) as "Qtd estacionamento / bairro" from estacionamento est inner join Bairro brr on (est.fk_bairro_idBairro = brr.idbairro) GROUP BY brr.dscBairro;
 <p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
     
-Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
+##### 5) Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
       SELECT nomeEstacionamento, fk_empresa_idempresa FROM estacionamento;
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
