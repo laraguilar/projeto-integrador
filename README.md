@@ -103,6 +103,11 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
           FOREIGN KEY (fk_Bairro_idBairro)
           REFERENCES Bairro (idBairro)
           ON DELETE RESTRICT;
+      
+      UPDATE empresa SET nomempresa='VixPark' WHERE idempresa=1;
+      UPDATE empresa SET nomempresa='InstaPark' WHERE idempresa=2;
+      UPDATE empresa SET nomempresa='Parky Estacionamentos' WHERE idempresa=3;
+      UPDATE empresa SET nomempresa='Estacioney' WHERE idempresa=4;
   </p>
 
 ### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
