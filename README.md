@@ -259,15 +259,15 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
       
- ##### 2) Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
+ ##### 2) Relatorio com o nome do estacionamento e quantidade de vagas.<br>
  
-      SELECT avg(qtdHrs) AS "Media Qtd Horas" FROM vagas;
+      SELECT nomeestacionamento, qtdvagas FROM estacionamento;
       
 <p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
       
  ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
-      SELECT * FROM historico_estacionamento WHERE EXTRACT(MONTH FROM hrentrada) = 7;
+      SELECT dscplacacarro, extract(hour from hrsaida - hrentrada) as "Tempo" FROM historico_estacionamento WHERE EXTRACT(MONTH FROM hrentrada) = 7 order by "Tempo";
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
 ##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
@@ -277,7 +277,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     
 ##### 5) Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
-      SELECT nomeEstacionamento, fk_empresa_idempresa FROM estacionamento;
+      SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.fk_empresa_idempresa = emp.idempresa) group by emp.idempresa;
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
