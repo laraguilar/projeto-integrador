@@ -4,7 +4,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 # Sumário
 ### 1.COMPONENTES
   <p>Integrantes do Grupo:<br>
-  <br>
+  Guilherme Silveira Mendes: guilhermesilveira.2015@hotmail.com<br>
   Lara Aguilar de Amorim: lara.aguilar2003@gmail.com</p>
 
 ### 2.MINIMUNDO
