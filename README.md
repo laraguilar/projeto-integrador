@@ -104,10 +104,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
           REFERENCES Bairro (idBairro)
           ON DELETE RESTRICT;
       
-      UPDATE empresa SET nomempresa='VixPark' WHERE idempresa=1;
-      UPDATE empresa SET nomempresa='InstaPark' WHERE idempresa=2;
-      UPDATE empresa SET nomempresa='Parky Estacionamentos' WHERE idempresa=3;
-      UPDATE empresa SET nomempresa='Estacioney' WHERE idempresa=4;
+      ALTER TABLE Empresa ADD nomempresa varchar(45);
   </p>
 
 ### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
@@ -228,6 +225,10 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   
       UPDATE estacionamento SET fk_bairro_idbairro = 1 WHERE idestacionamento = 5;
       UPDATE estacionamento SET cep = '29047-291', rua = 'Rua José Elias dos Reis Fraga' WHERE idEstacionamento = 5;
+      UPDATE empresa SET nomempresa='VixPark' WHERE idempresa=1;
+      UPDATE empresa SET nomempresa='InstaPark' WHERE idempresa=2;
+      UPDATE empresa SET nomempresa='Parky Estacionamentos' WHERE idempresa=3;
+      UPDATE empresa SET nomempresa='Estacioney' WHERE idempresa=4;
       
 </p>
 
