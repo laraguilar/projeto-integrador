@@ -292,7 +292,11 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 <p><img src="/arquivos/relatorio5.PNG" alt="Relatório 5"></p>
 
 ### 12.Slides e Apresentação em vídeo.
-  <p></p>
+#### 12.1 Slides;
+https://docs.google.com/presentation/d/1b_0QjegHWRP4IcaemKGxc9DQ9KeSATGLhsF4ZXBTasA/edit?usp=sharing 
+
+#### 12.2 Apresentação em vídeo;
+
 
 ### OBSERVAÇÕES IMPORTANTES
   
