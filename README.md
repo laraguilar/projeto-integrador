@@ -281,10 +281,22 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
-  <p></p>
+#### 11.1 Integração com Linguagem de Programação;
+<p><img src="/arquivos/conexao_postgres.PNG" alt="Conexão com o postgres"></p>
+
+#### 11.2 Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais;
+<p><img src="/arquivos/relatorio1.PNG" alt="Relatório 1"></p>
+<p><img src="/arquivos/relatorio2.PNG" alt="Relatório 2"></p>
+<p><img src="/arquivos/relatorio3.PNG" alt="Relatório 3"></p>
+<p><img src="/arquivos/relatorio4.PNG" alt="Relatório 4"></p>
+<p><img src="/arquivos/relatorio5.PNG" alt="Relatório 5"></p>
 
 ### 12.Slides e Apresentação em vídeo.
-  <p></p>
+#### 12.1 Slides;
+https://docs.google.com/presentation/d/1b_0QjegHWRP4IcaemKGxc9DQ9KeSATGLhsF4ZXBTasA/edit?usp=sharing 
+
+#### 12.2 Apresentação em vídeo;
+
 
 ### OBSERVAÇÕES IMPORTANTES
   
