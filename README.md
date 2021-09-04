@@ -254,7 +254,6 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
   ##### 1) Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
-  
       SELECT dscplaca, extract(hour from hr_saidaEfetiva - hr_entrada) as "TempoEstacionado" FROM aloca WHERE date(hr_Entrada) = '2021-07-09';
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
