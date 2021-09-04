@@ -26,7 +26,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
 
 ### 5.PMC
-  <p><img src="/arquivos/PMC-v.1.0.png" alt="Project Model Canvas"></p>
+  <p><img src="/arquivos/PMC-v.1.1.png" alt="Project Model Canvas"></p>
 
 ### 6.MODELO CONCEITUAL
   <p><img src="/arquivos/modelo_conceitual.png" alt="Modelo conceitual"></p>
@@ -37,220 +37,197 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 8.MODELO FÍSICO
   <p>
   
-      DROP TABLE IF EXISTS Empresa;
-      CREATE TABLE Empresa (
+      DROP TABLE IF EXISTS Aloca;
+      CREATE TABLE Aloca (
+          idAloca int PRIMARY KEY,
+          dscPlaca varchar(12),
+          hr_entrada TIMESTAMP,
+          hr_saidaPrevista TIMESTAMP,
+          hr_saidaEfetiva TIMESTAMP,
+          idEmpresa int,
+          codVaga int
+      );
+
+      DROP TABLE IF EXISTS VAGA;
+      CREATE TABLE VAGA (
+          codVaga int PRIMARY KEY,
+          condVaga bool,
+          idEstac int
+      );
+
+      DROP TABLE IF EXISTS ENDERECO;
+      CREATE TABLE ENDERECO (
+          idEnd int PRIMARY KEY,
+          dscLogradouro varchar(45),
+          numero int,
+          cep varchar(20),
+          idEstac int,
+          idBairro int
+      );
+      DROP TABLE IF EXISTS BAIRRO;
+      CREATE TABLE BAIRRO (
+          idBairro int PRIMARY KEY,
+          nomBairro varchar(45)
+      );
+
+      DROP TABLE IF EXISTS ESTACIONAMENTO;
+      CREATE TABLE ESTACIONAMENTO (
+          idEstac int PRIMARY KEY,
+          nomEstac varchar(45),
+          qtdVagas int,
+          idEmpresa int
+      );
+
+
+      DROP TABLE IF EXISTS EMPRESA;
+      CREATE TABLE EMPRESA (
           idEmpresa int PRIMARY KEY,
+          nomEmpresa varchar(45),
           dscCpfCnpj varchar(45),
           Email varchar(45),
           Senha varchar(45)
       );
 
-      DROP TABLE IF EXISTS Estacionamento;
-      CREATE TABLE Estacionamento (
-          idEstacionamento int PRIMARY KEY,
-          NomeEstacionamento varchar(45),
-          qtdVagas smallint,
-          CEP varchar(45),
-          Rua varchar(45),
-          numRua int,
-          fk_Vagas_idVaga int,
-          fk_Empresa_idEmpresa int,
-          fk_Bairro_idBairro int
-      );
 
-      DROP TABLE IF EXISTS Vagas;
-      CREATE TABLE Vagas (
-          idVaga int PRIMARY KEY,
-          condVaga bit,
-          PlacaCarro varchar(45),
-          hrEntrada timestamp,
-          qtdHrs time,
-          HRSaidaPrevista timestamp
-      );
-
-      DROP TABLE IF EXISTS Bairro;
-      CREATE TABLE Bairro (
-          idBairro int PRIMARY KEY,
-          dscBairro varchar(45)
-      );
-
-      DROP TABLE IF EXISTS historico_estacionamento;
-      CREATE TABLE historico_estacionamento (
-          idHistorico int PRIMARY KEY,
-          dscPlacaCarro varchar(45),
-          hrEntrada timestamp,
-          hrSaidaPrevista timestamp,
-          hrSaida timestamp
-      );
-
-      DROP TABLE IF EXISTS vagasHistorico;
-      CREATE TABLE vagasHistorico (
-          idHistorico int PRIMARY KEY,    
-          idVaga int NOT NULL
-      );
-
-      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_2
-          FOREIGN KEY (fk_Vagas_idVaga)
-          REFERENCES Vagas (idVaga)
+      ALTER TABLE ESTACIONAMENTO ADD CONSTRAINT FK_ESTACIONAMENTO_2
+          FOREIGN KEY (idEmpresa)
+          REFERENCES EMPRESA (idEmpresa)
           ON DELETE RESTRICT;
 
-      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_3
-          FOREIGN KEY (fk_Empresa_idEmpresa)
-          REFERENCES Empresa (idEmpresa)
+      ALTER TABLE ENDERECO ADD CONSTRAINT FK_ENDERECO_2
+          FOREIGN KEY (idEstac)
+          REFERENCES ESTACIONAMENTO (idEstac)
           ON DELETE RESTRICT;
 
-      ALTER TABLE Estacionamento ADD CONSTRAINT FK_Estacionamento_4
-          FOREIGN KEY (fk_Bairro_idBairro)
-          REFERENCES Bairro (idBairro)
+      ALTER TABLE ENDERECO ADD CONSTRAINT FK_ENDERECO_3
+          FOREIGN KEY (idBairro)
+          REFERENCES BAIRRO (idBairro)
           ON DELETE RESTRICT;
-      
-      ALTER TABLE Empresa ADD nomempresa varchar(45);
+
+      ALTER TABLE VAGA ADD CONSTRAINT FK_VAGA_2
+          FOREIGN KEY (idEstac)
+          REFERENCES ESTACIONAMENTO (idEstac)
+          ON DELETE RESTRICT;
+
+      ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_2
+          FOREIGN KEY (idEmpresa)
+          REFERENCES EMPRESA (idEmpresa)
+          ON DELETE SET NULL;
+
+      ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_3
+          FOREIGN KEY (codVaga)
+          REFERENCES VAGA (codVaga)
+          ON DELETE SET NULL;
   </p>
 
 ### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
   <p>
   
-  
-      INSERT INTO Bairro
-      VALUES (1, 'Jardim da Penha'),
-              (2, 'SÃ£o Pedro'),
-              (3, 'Ilha das Caieiras'),
-              (4, 'Jardim Camburi'),
-              (5, 'Praia do Canto');
+    INSERT INTO Empresa
+    VALUES (1, 'Vix Park', '04.236.475/0001-32', 'vixpark@gmail.com', 'esYSXMdYyzQH'),
+            (2, 'InstaPark','34.353.384/0001-48', 'instaEmpresa@gmail.com', 'YkKjfxThEwDf'),
+            (3, 'Parky Estacionamentos','229.802.280-10', 'parky.estacionamentos@hotmail.com', 'kqfcvGATSESk'),
+            (4, 'Estacioney','586.685.070-28', 'neyestacionamentos@outlook.com', 'rYbCNgNBUfvd');
 
-      INSERT INTO Empresa
-      VALUES (1, '04.236.475/0001-32', 'vixpark@gmail.com', 'esYSXMdYyzQH'),
-              (2, '34.353.384/0001-48', 'instaEmpresa@gmail.com', 'YkKjfxThEwDf'),
-              (3, '229.802.280-10', 'parky.estacionamentos@hotmail.com', 'kqfcvGATSESk'),
-              (4, '586.685.070-28', 'neyestacionamentos@outlook.com', 'rYbCNgNBUfvd');
+    INSERT INTO Estacionamento
+    VALUES (1, 'Vixpark Estacionamento', 4, 1),
+          (2, 'Instapark', 4, 2),
+          (3, 'Parky Estacionamento', 5, 3),
+          (4, 'Estacioney', 5, 4),
+          (5, 'RotaPark', 4, 4);
 
+    INSERT INTO VAGA
+    VALUES (1,	'0',	1),
+    (2,	'1',	1),
+    (3,	'0',	1),
+    (4,	'1',	1),
+    (5,	'0',	2),
+    (6,	'0',	2),
+    (7,	'1',	2),
+    (8,	'1',	2),
+    (9,	'0',	3),
+    (10,	'0',	3),
+    (11, '1',	3),
+    (12,	'0',	3),
+    (13,	'0',	3),
+    (14,	'1', 4),
+    (15,	'1',	4),
+    (16,	'1',	4),
+    (17,	'1',	4),
+    (18,	'1',	4),
+    (19,	'0',	5),
+    (20,	'0',	5),
+    (21,	'1',	5),
+    (22,	'0',	5);
 
+    INSERT INTO ALOCA
+    VALUES (1,	'HSF0850',	'2021-07-09 12:02:09',	'2021-07-09 15:02:09',	'2021-07-09 15:02:09',	1,	1),
+    (2,	'NFB8592',	'2021-07-09 10:26:37',	'2021-07-09 11:26:37',	'2021-07-09 11:26:37',	1,	2),
+    (3,	'JQN7059',	'2021-07-09 06:12:22',	'2021-07-09 10:12:22',	'2021-07-09 10:12:22',	1,	3),
+    (4,	'MUR6823',	'2021-07-08 09:02:00',	'2021-07-08 11:02:00',	'2021-07-08 11:02:00',	1,	4),
+    (5,	'NFA2145',	'2021-07-08 13:02:00',	'2021-07-09 14:02:00',	'2021-07-09 14:02:00',	2,	8),
+    (6,	'MXO9426',	'2021-06-18 08:25:28',	'2021-06-18 10:25:28',	'2021-06-18 10:25:28',	2,	5),
+    (7,	'NET6883',	'2021-06-21 12:07:11',	'2021-06-21 14:00:00',	'2021-06-21 14:00:00',	2,	7),
+    (8,	'NET6883',	'2021-01-12 11:25:38',	'2021-01-12 14:25:38',	'2021-01-12 14:25:38',	2,	6),
+    (9,	'KBX2087',	'2021-07-22 10:55:36',	'2021-07-22 11:55:36',	'2021-07-22 11:55:36',	3,	13),
+    (10, 'MUO6663',	'2020-12-28 10:11:18',	'2020-12-28 11:11:18',	'2020-12-28 11:11:18',	3,	10),
+    (11, 'MWV1941',	'2021-07-15 08:58:46',	'2021-07-15 13:58:46',	'2021-07-15 13:58:46',	3,	11),
+    (12, 'KPQ7466',	'2021-09-01 11:49:13',	'2021-09-01 14:49:13',	'2021-09-01 14:49:13',	3,	12),
+    (13, 'HWA3740',	'2021-06-10 12:47:39',	'2021-06-10 15:47:00',	'2021-06-10 15:47:00',	3,	9),
+    (14, 'MFV9264',	'2021-01-06 08:17:24',	'2021-01-06 18:17:00',	'2021-01-06 18:17:00',	4,	22),
+    (15, 'LWL3427',	'2021-04-13 12:51:12',	'2021-04-13 13:51:12',	'2021-04-13 13:51:12',	4,	18),
+    (16, 'MXC5240',	'2021-05-26 11:46:08',	'2021-05-26 13:46:08',	'2021-05-27 13:46:08',	4,	17),
+    (17, 'MNB3961',	'2021-07-07 10:46:45',	'2021-07-07 18:46:45',	'2021-07-08 17:46:45',	4,	15),
+    (18, 'KBW6061',	'2020-09-15 07:40:00',	'2020-09-15 08:40:00',	'2020-09-15 08:40:00',	4,	14),
+    (19, 'MUD8981',	'2020-09-29 11:24:53',	'2020-09-29 15:24:53',	'2020-09-29 15:24:53',	4,	21),
+    (20, 'HTV5237',	'2021-07-08 07:00:09',	'2021-07-08 09:00:09',	'2021-07-08 09:00:09',	4,	19),
+    (21, 'MWW1974',	'2021-08-20 12:35:47',	'2021-08-20 15:35:47',	'2021-08-21 15:35:47',	4,	20),
+    (22, 'HZQ1381',	'2021-01-20 09:09:09',	'2021-01-20 10:09:09',	'2021-01-20 10:09:09',	4,	16),
+    (23, 'NEO5813',	'2020-11-05 10:05:28',	'2020-11-05 11:05:28',	'2020-11-06 11:05:28',	1,	3),
+    (24, 'MXM9004',	'2021-04-06 12:52:04',	'2021-04-06 15:52:04',	'2021-04-06 15:52:04',	2,	5),
+    (25, 'NEB0273',	'2021-01-14 10:08:51',	'2021-01-14 15:10:00',	'2021-01-14 15:10:00',	2,	7),
+    (26, 'HRJ7052',	'2021-07-15 11:09:52',	'2021-07-15 13:09:52',	'2021-07-15 13:09:52',	3,	10),
+    (27, 'MRJ0845',	'2020-12-27 11:11:37',	'2020-12-27 16:11:37',	'2020-12-27 16:11:37',	3,	13),
+    (28, 'NBW8056',	'2020-08-23 11:38:03',	'2020-08-23 16:38:03',	'2020-08-23 16:38:03',	2,	8),
+    (29, 'HWT2078',	'2020-09-24 08:18:31',	'2020-09-24 10:18:31',	'2020-09-25 10:18:31',	1,	2),
+    (30, 'KLQ2773',	'2021-01-23 10:46:06',	'2021-01-23 15:46:06',	'2021-01-24 15:46:06',	2,	5);
 
+    INSERT INTO Bairro
+    VALUES (1, 'Jardim da Penha'),
+            (2, 'São Pedro'),
+            (3, 'Ilha das Caieiras'),
+            (4, 'Jardim Camburi'),
+            (5, 'Praia do Canto');
 
-      insert into Estacionamento (idestacionamento, nomeestacionamento, qtdvagas, cep, rua, numrua, fk_bairro_idbairro, fk_empresa_idempresa)
-      Values(1, 'Vixpark Estacionamento', 4, '29047-035', 'Rua Orácio Cândido dos Santos', '540', 1, 1),
-          (2, 'Instapark', 4, '29030-065', 'Travessa Canindé', '345', 2, 2),
-          (3, 'Parky Estacionamento', 5, '29032-106', 'Rua Vista Linda', '781', 3, 3),
-          (4, 'Estacioney', 5, '29027-160', 'Rua Lucidato Vieira Falcão', '201', 4, 4),
-          (5, 'RotaPark', 4, '29050-227', 'Travessa do Tabual', '321', 5, 4);
-
-
-      insert into Vagas (idvaga, condvaga, placacarro, hrentrada, qtdhrs, hrsaidaprevista)
-      values (1, '0',  null, '09-07-2021 09:51:01', '08:00:00', '09/07/2021 17:51:01'),
-      (2, '1', 'MHU9745' ,'10/07/2021 09:51:01',	'11:00:00'	,'10/07/2021 20:51:01'),
-      (3,	'0',	null,	'11/07/2021 09:51:01',	'04:00:00',	'11/07/2021 13:51:01'), 
-      (4,	'1',	'JPK8L12',	'12/07/2021 09:51:01',	'01:00:00',	'12/07/2021 10:51:01'),
-      (5,	'0',	null,	null,	null,	null),
-      (6,	'0',	null,	null,	null,	null),
-      (7,	'1',	'KDJ3268',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-      (8,	'1',	'JTT2569',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-      (9,	'0',	null,	null,	null,	null),
-      (10, '0',	null,	null,	null,	null),
-      (11, '1',	'DNS7891',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-      (12, '0',	null,	null,	null,	null),
-      (13, '0',	null,	null,	null,	null),
-      (14, '1',	'NCO7561',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
-      (15, '1',	'SHA1546',	'10/07/2021 09:51:01',	'12:00:00',	'10/07/2021 21:51:01'),
-      (16,	'1',	'CNA4523',	'10/07/2021 09:51:01',	'13:00:00', '10/07/2021 22:51:01'),
-      (17, '1',	'RPW4925',	'10/07/2021 09:51:01',	'14:00:00',	'10/07/2021 23:51:01'),
-      (18, '1',	'CAP3614',	'10/07/2021 09:51:01',	'15:00:00',	'11/07/2021 00:51:01'),
-      (19, '0',	null,	null,	null,	null),
-      (20, '0',	null,	null,	null,	null),
-      (21, '1',	'FJP1643',	'10/07/2021 09:51:01',	'11:00:00',	'10/07/2021 20:51:01'),
-      (22, '0',	null,	null,	null,	null);
-      
-      INSERT INTO historico_estacionamento 
-      VALUES (1,	'HSF0850',	'2021-07-09 12:02:09',	'2021-07-09 15:02:09',	'2021-07-09 15:02:09'),
-      (2,	'NFB8592',	'2021-07-09 10:26:37',	'2021-07-09 11:26:37',	'2021-07-09 11:26:37'),
-      (3,	'JQN7059',	'2021-07-09 06:12:22',	'2021-07-09 10:12:22',	'2021-07-09 10:12:22'),
-      (4,	'MUR6823',	'2021-07-08 09:02:00',	'2021-07-08 11:02:00',	'2021-07-08 11:02:00'),
-      (5,	'NFA2145',	'2021-07-08 13:02:00',	'2021-07-09 14:02:00',	'2021-07-09 14:02:00'),
-      (6,	'MXO9426',	'2021-06-18 08:25:28',	'2021-06-18 10:25:28',	'2021-06-18 10:25:28'),
-      (7,	'NET6883',	'2021-06-21 12:07:11',	'2021-06-21 14:00:00',	'2021-06-21 14:00:00'),
-      (8,	'NET6883',	'2021-01-12 11:25:38',	'2021-01-12 14:25:38',	'2021-01-12 14:25:38'),
-      (9,	'KBX2087',	'2021-07-22 10:55:36',	'2021-07-22 11:55:36',	'2021-07-22 11:55:36'),
-      (10,	'MUO6663',	'2020-12-28 10:11:18',	'2020-12-28 11:11:18',	'2020-12-28 11:11:18'),
-      (11,	'MWV1941',	'2021-07-15 08:58:46',	'2021-07-15 13:58:46',	'2021-07-15 13:58:46'),
-      (12,	'KPQ7466',	'2021-09-01 11:49:13',	'2021-09-01 14:49:13',	'2021-09-01 14:49:13'),
-      (13,	'HWA3740',	'2021-06-10 12:47:39',	'2021-06-10 15:47:00',	'2021-06-10 15:47:00'),
-      (14,	'MFV9264',	'2021-01-06 08:17:24',	'2021-01-06 18:17:00',	'2021-01-06 18:17:00'),
-      (15,	'LWL3427',	'2021-04-13 12:51:12',	'2021-04-13 13:51:12',	'2021-04-13 13:51:12'),
-      (16,	'MXC5240',	'2021-05-26 11:46:08',	'2021-05-26 13:46:08',	'2021-05-27 13:46:08'),
-      (17,	'MNB3961',	'2021-07-07 10:46:45',	'2021-07-07 18:46:45',	'2021-07-08 17:46:45'),
-      (18,	'KBW6061',	'2020-09-15 07:40:00',	'2020-09-15 08:40:00',	'2020-09-15 08:40:00'),
-      (19,	'MUD8981',	'2020-09-29 11:24:53',	'2020-09-29 15:24:53',	'2020-09-29 15:24:53'),
-      (20,	'HTV5237',	'2021-07-08 07:00:09',	'2021-07-08 09:00:09',	'2021-07-08 09:00:09'),
-      (21,	'MWW1974',	'2021-08-20 12:35:47',	'2021-08-20 15:35:47',	'2021-08-21 15:35:47'),
-      (22,	'HZQ1381',	'2021-01-20 09:09:09',	'2021-01-20 10:09:09',	'2021-01-20 10:09:09'),
-      (23,	'NEO5813',	'2020-11-05 10:05:28',	'2020-11-05 11:05:28',	'2020-11-06 11:05:28'),
-      (24,	'MXM9004',	'2021-04-06 12:52:04',	'2021-04-06 15:52:04',	'2021-04-06 15:52:04'),
-      (25,	'NEB0273',	'2021-01-14 10:08:51',	'2021-01-14 15:10:00',	'2021-01-14 15:10:00'),
-      (26,	'HRJ7052',	'2021-07-15 11:09:52',	'2021-07-15 13:09:52',	'2021-07-15 13:09:52'),
-      (27,	'MRJ0845',	'2020-12-27 11:11:37',	'2020-12-27 16:11:37',	'2020-12-27 16:11:37'),
-      (28,	'NBW8056',	'2020-08-23 11:38:03',	'2020-08-23 16:38:03',	'2020-08-23 16:38:03'),
-      (29,	'HWT2078',	'2020-09-24 08:18:31',	'2020-09-24 10:18:31',	'2020-09-25 10:18:31'),
-      (30,	'KLQ2773',	'2021-01-23 10:46:06',	'2021-01-23 15:46:06',	'2021-01-24 15:46:06');
-
-      INSERT INTO vagasHistorico 
-      VALUES (1,	1),
-      (2,	6),
-      (3,	1),
-      (4,	2),
-      (5,	7),
-      (6,	3),
-      (7,	3),
-      (8,	5),
-      (9,	20),
-      (10,	6),
-      (11,	11),
-      (12,	12),
-      (13,	13),
-      (14,	14),
-      (15,	15),
-      (16,	16),
-      (17,	17),
-      (18,	18),
-      (19,	19),
-      (20,	2),
-      (21,	10),
-      (22, 7),
-      (23,	5),
-      (24,	10),
-      (25,	9),
-      (26, 6),
-      (27, 22),
-      (28,	21),
-      (29,	9),
-      (30,	8);
-  
-      UPDATE estacionamento SET fk_bairro_idbairro = 1 WHERE idestacionamento = 5;
-      UPDATE estacionamento SET cep = '29047-291', rua = 'Rua José Elias dos Reis Fraga' WHERE idEstacionamento = 5;
-      UPDATE empresa SET nomempresa='VixPark' WHERE idempresa=1;
-      UPDATE empresa SET nomempresa='InstaPark' WHERE idempresa=2;
-      UPDATE empresa SET nomempresa='Parky Estacionamentos' WHERE idempresa=3;
-      UPDATE empresa SET nomempresa='Estacioney' WHERE idempresa=4;
-      
+    INSERT INTO ENDERECO
+    VALUES (1,	'Rua Orácio Cândido dos Santos',	540,	'29047-035',	1,	1),
+    (2,	'Travessa Canindé',	345,	'29030-065',	2,	2),
+    (3,	'Rua Vista Linda',	781,	'29032-106',	3,	3),
+    (4,	'Rua Lucidato Vieira Falcão',	201,	'29027-160',	4,	4),
+    (5,	'Travessa do Tabual',	321,	'29050-227',	5,	5);
+    
+    UPDATE endereco SET idbairro = 1 WHERE idestac = 5;
 </p>
 
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
   #### 10.1 CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS
-      SELECT * FROM empresa
+      SELECT * FROM empresa;
 <p><img src="/arquivos/SELECTS/empresa.PNG" alt="Select empresa"></p>
 
-      SELECT * FROM estacionamento
+      SELECT * FROM estacionamento;
 <p><img src="/arquivos/SELECTS/estacionamento.PNG" alt="Select estacionamento"></p>
 
-      SELECT * FROM bairro
+      SELECT * FROM bairro;
  <p><img src="/arquivos/SELECTS/bairro.PNG" alt="Select bairro"></p>     
  
-      SELECT * FROM vagas 
+      SELECT * FROM vaga;
 <p><img src="/arquivos/SELECTS/vagas.PNG" alt="Select vagas"></p>
 
-      SELECT * FROM historico_estacionamento;
-<p><img src="/arquivos/SELECTS/historico_estacionamento.PNG" alt="Select historico_estacionamento"></p>
+      SELECT * FROM endereco;
+<p><img src="/arquivos/SELECTS/endereco.png" alt="Select endereco"></p>
 
-      SELECT * FROM vagasHistorico;
-<p><img src="/arquivos/SELECTS/vagasHistorico.PNG" alt="Select vagasHistórico"></p>      
+      SELECT * FROM aloca
+<p><img src="/arquivos/SELECTS/aloca.png" alt="Select vagasHistórico"></p>      
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
   ##### 1) Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
@@ -258,15 +235,22 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
       
- ##### 2) Relatório com a quantidade média de horas que os carros estacionados definiram no dia.<br>
+ ##### 2) Relatorio com o nome do estacionamento e quantidade de vagas.<br>
  
+
       SELECT nomestac, qtdvagas FROM estacionamento;
+
+
+
       
 <p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
       
  ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
+
       SELECT dscplaca, extract(hour from hr_saidaefetiva - hr_entrada) as "Tempo" FROM aloca WHERE EXTRACT(MONTH FROM hr_entrada) = 7 order by "Tempo";
+
+
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
 ##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
@@ -276,14 +260,24 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     
 ##### 5) Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
-      SELECT nomeEstacionamento, fk_empresa_idempresa FROM estacionamento;
+      SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.fk_empresa_idempresa = emp.idempresa) group by emp.idempresa;
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
-  <p></p>
+#### 11.1 Integração com Linguagem de Programação;
+<p><img src="/arquivos/conexao_postgres.PNG" alt="Conexão com o postgres"></p>
+
+#### 11.2 Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais;
+<p><img src="/arquivos/relatorio1.PNG" alt="Relatório 1"></p>
+<p><img src="/arquivos/relatorio2.PNG" alt="Relatório 2"></p>
+<p><img src="/arquivos/relatorio3.PNG" alt="Relatório 3"></p>
+<p><img src="/arquivos/relatorio4.PNG" alt="Relatório 4"></p>
+<p><img src="/arquivos/relatorio5.PNG" alt="Relatório 5"></p>
 
 ### 12.Slides e Apresentação em vídeo.
-  <p></p>
+#### 12.1 Slides;
+https://docs.google.com/presentation/d/1b_0QjegHWRP4IcaemKGxc9DQ9KeSATGLhsF4ZXBTasA/edit?usp=sharing 
 
-### OBSERVAÇÕES IMPORTANTES
-  
+#### 12.2 Apresentação em vídeo;
+https://youtu.be/j4KEmgnTlzA
+
