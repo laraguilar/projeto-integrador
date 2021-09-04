@@ -260,7 +260,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     
 ##### 5) Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
-      SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.fk_empresa_idempresa = emp.idempresa) group by emp.idempresa;
+        SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.idempresa = emp.idempresa) group by emp.idempresa;
 <p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
