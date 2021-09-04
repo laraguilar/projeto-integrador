@@ -253,7 +253,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
-##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
+##### 4) Relatório que informe a quantidade de estacionamentos por bair.<br>
 
       SELECT brr.nomBairro, COUNT(*) as "Qtd estacionamento / bairro" FROM Endereco ende INNER JOIN Bairro brr on (ende.idbairro = brr.idbairro) GROUP BY brr.nomBairro;
 <p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
