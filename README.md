@@ -231,20 +231,26 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
   ##### 1) Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
-  
-      SELECT dscplacacarro, extract(hour from hrsaida - hrentrada) as "TempoEstacionado" FROM historico_estacionamento WHERE date(hrEntrada) = '2021-07-09';
+      SELECT dscplaca, extract(hour from hr_saidaEfetiva - hr_entrada) as "TempoEstacionado" FROM aloca WHERE date(hr_Entrada) = '2021-07-09';
       
 <p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
       
  ##### 2) Relatorio com o nome do estacionamento e quantidade de vagas.<br>
  
-      SELECT nomeestacionamento, qtdvagas FROM estacionamento;
+
+      SELECT nomestac, qtdvagas FROM estacionamento;
+
+
+
       
 <p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
       
  ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
-      SELECT dscplacacarro, extract(hour from hrsaida - hrentrada) as "Tempo" FROM historico_estacionamento WHERE EXTRACT(MONTH FROM hrentrada) = 7 order by "Tempo";
+
+      SELECT dscplaca, extract(hour from hr_saidaefetiva - hr_entrada) as "Tempo" FROM aloca WHERE EXTRACT(MONTH FROM hr_entrada) = 7 order by "Tempo";
+
+
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
 ##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
