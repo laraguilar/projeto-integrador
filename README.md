@@ -267,7 +267,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       
  ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
-      SELECT dscplaca, extract(hour from hr_saidaefetiva - hr_entrada) as "Tempo" FROM aloca WHERE EXTRACT(MONTH FROM hr_entrada) = 7 order by "Tempo
+      SELECT dscplaca, extract(hour from hr_saidaefetiva - hr_entrada) as "Tempo" FROM aloca WHERE EXTRACT(MONTH FROM hr_entrada) = 7 order by "Tempo";
 <p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
      
 ##### 4) Relatório que informe a quantidade de estacionamentos por bairro.<br>
