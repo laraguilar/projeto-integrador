@@ -205,7 +205,8 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     (3,	'Rua Vista Linda',	781,	'29032-106',	3,	3),
     (4,	'Rua Lucidato Vieira Falcão',	201,	'29027-160',	4,	4),
     (5,	'Travessa do Tabual',	321,	'29050-227',	5,	5);
-      
+    
+    UPDATE endereco SET idbairro = 1 WHERE idestac = 5;
 </p>
 
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
