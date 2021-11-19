@@ -26,7 +26,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
 
 ### 5.PMC
-  <p><img src="/arquivos/imagens/PMC-v.1.1.png" alt="Project Model Canvas"></p>
+  <p><img src="/arquivos/imagens/PMC-v1.1.png" alt="Project Model Canvas"></p>
 
 ### 6.MODELO CONCEITUAL
   <p><img src="/arquivos/imagens/modelos/modelo_conceitual.png" alt="Modelo conceitual"></p>
