@@ -13,7 +13,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)
   <p><a href="/arquivos/mockup-web.pdf">Mockup Web</a></p>
   
-  #### 3.1.QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
+  #### 3.1.QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO? (desatualizado)
 
   > O Sistema de Estacionamento precisa inicialmente dos seguintes relatórios:<br>
     * Relatório com a quantidade de veículos que utilizaram o estacionamento por dia.<br>
@@ -31,10 +31,10 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 6.MODELO CONCEITUAL
   <p><img src="/arquivos/imagens/modelos/modelo_conceitual.png" alt="Modelo conceitual"></p>
 
-### 7.MODELO LÓGICO
+### 7.MODELO LÓGICO (desatualizado)
   <p><img src="/arquivos/imagens/modelos/modelo_logico.png" alt="Modelo lógico"></p>
 
-### 8.MODELO FÍSICO
+### 8.MODELO FÍSICO (desatualizado)
   <p>
   
       DROP TABLE IF EXISTS Aloca;
@@ -120,7 +120,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
           ON DELETE SET NULL;
   </p>
 
-### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS
+### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS (desatualizado)
   <p>
   
     INSERT INTO Empresa
@@ -209,7 +209,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     UPDATE endereco SET idbairro = 1 WHERE idestac = 5;
 </p>
 
-### 10.TABELAS E PRINCIPAIS CONSULTAS
+### 10.TABELAS E PRINCIPAIS CONSULTAS (desatualizado)
   #### 10.1 CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS
       SELECT * FROM empresa;
 <p><img src="/arquivos/imagens/selects/empresa.PNG" alt="Select empresa"></p>
@@ -263,7 +263,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
         SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.idempresa = emp.idempresa) group by emp.idempresa;
 <p><img src="/arquivos/imagens/consultas/5.PNG" alt="Relatório 5"></p>  
       
-### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
+### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações (desatualizados)
 #### 11.1 Integração com Linguagem de Programação;
 <p><img src="/arquivos/conexao_postgres.PNG" alt="Conexão com o postgres"></p>
 
