@@ -26,13 +26,13 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
   <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
 
 ### 5.PMC
-  <p><img src="/arquivos/PMC-v.1.1.png" alt="Project Model Canvas"></p>
+  <p><img src="/arquivos/imagens/PMC-v.1.1.png" alt="Project Model Canvas"></p>
 
 ### 6.MODELO CONCEITUAL
-  <p><img src="/arquivos/modelo_conceitual.png" alt="Modelo conceitual"></p>
+  <p><img src="/arquivos/imagens/modelos/modelo_conceitual.png" alt="Modelo conceitual"></p>
 
 ### 7.MODELO LÓGICO
-  <p><img src="/arquivos/modelo_logico.png" alt="Modelo lógico"></p>
+  <p><img src="/arquivos/imagens/modelos/modelo_logico.png" alt="Modelo lógico"></p>
 
 ### 8.MODELO FÍSICO
   <p>
@@ -212,28 +212,28 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 10.TABELAS E PRINCIPAIS CONSULTAS
   #### 10.1 CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS
       SELECT * FROM empresa;
-<p><img src="/arquivos/SELECTS/empresa.PNG" alt="Select empresa"></p>
+<p><img src="/arquivos/imagens/selects/empresa.PNG" alt="Select empresa"></p>
 
       SELECT * FROM estacionamento;
-<p><img src="/arquivos/SELECTS/estacionamento.PNG" alt="Select estacionamento"></p>
+<p><img src="/arquivos/imagens/selects/estacionamento.PNG" alt="Select estacionamento"></p>
 
       SELECT * FROM bairro;
- <p><img src="/arquivos/SELECTS/bairro.PNG" alt="Select bairro"></p>     
+ <p><img src="/arquivos/imagens/selects/bairro.PNG" alt="Select bairro"></p>     
  
       SELECT * FROM vaga;
-<p><img src="/arquivos/SELECTS/vagas.PNG" alt="Select vagas"></p>
+<p><img src="/arquivos/imagens/selects/vagas.PNG" alt="Select vagas"></p>
 
       SELECT * FROM endereco;
-<p><img src="/arquivos/SELECTS/endereco.png" alt="Select endereco"></p>
+<p><img src="/arquivos/imagens/selects/endereco.png" alt="Select endereco"></p>
 
       SELECT * FROM aloca
-<p><img src="/arquivos/SELECTS/aloca.png" alt="Select vagasHistórico"></p>      
+<p><img src="/arquivos/imagens/selects/aloca.png" alt="Select vagasHistórico"></p>      
 
   #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA
   ##### 1) Relatório com a quantidade de horas que os veículos estacionaram em um dia específico.<br>
       SELECT dscplaca, extract(hour from hr_saidaEfetiva - hr_entrada) as "TempoEstacionado" FROM aloca WHERE date(hr_Entrada) = '2021-07-09';
       
-<p><img src="/arquivos/1.PNG" alt="Relatório 1"></p>
+<p><img src="/arquivos/imagens/consultas/1.PNG" alt="Relatório 1"></p>
       
  ##### 2) Relatorio com o nome do estacionamento e quantidade de vagas.<br>
  
@@ -243,7 +243,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 
 
       
-<p><img src="/arquivos/2.PNG" alt="Relatório 2"></p>
+<p><img src="/arquivos/imagens/consultas/2.PNG" alt="Relatório 2"></p>
       
  ##### 3) Relatório com as vagas ocupadas no mês 7;<br>
  
@@ -251,28 +251,28 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
       SELECT dscplaca, extract(hour from hr_saidaefetiva - hr_entrada) as "Tempo" FROM aloca WHERE EXTRACT(MONTH FROM hr_entrada) = 7 order by "Tempo";
 
 
-<p><img src="/arquivos/3.PNG" alt="Relatório 3"></p>
+<p><img src="/arquivos/imagens/consultas/3.PNG" alt="Relatório 3"></p>
      
 ##### 4) Relatório que informe a quantidade de estacionamentos por bair.<br>
 
       SELECT brr.nomBairro, COUNT(*) as "Qtd estacionamento / bairro" FROM Endereco ende INNER JOIN Bairro brr on (ende.idbairro = brr.idbairro) GROUP BY brr.nomBairro;
-<p><img src="/arquivos/4.PNG" alt="Relatório 4"></p>
+<p><img src="/arquivos/imagens/consultas/4.PNG" alt="Relatório 4"></p>
     
 ##### 5) Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: nome do estacionamento, id da empresa.<br>
 
         SELECT emp.nomempresa, count(*) as "qtdEstacionamento" FROM estacionamento est inner join empresa emp on (est.idempresa = emp.idempresa) group by emp.idempresa;
-<p><img src="/arquivos/5.PNG" alt="Relatório 5"></p>  
+<p><img src="/arquivos/imagens/consultas/5.PNG" alt="Relatório 5"></p>  
       
 ### 11.Gráficos, relatórios, integração com Linguagem de programação e outras solicitações
 #### 11.1 Integração com Linguagem de Programação;
 <p><img src="/arquivos/conexao_postgres.PNG" alt="Conexão com o postgres"></p>
 
 #### 11.2 Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais;
-<p><img src="/arquivos/relatorio1.PNG" alt="Relatório 1"></p>
-<p><img src="/arquivos/relatorio2.PNG" alt="Relatório 2"></p>
-<p><img src="/arquivos/relatorio3.PNG" alt="Relatório 3"></p>
-<p><img src="/arquivos/relatorio4.PNG" alt="Relatório 4"></p>
-<p><img src="/arquivos/relatorio5.PNG" alt="Relatório 5"></p>
+<p><img src="/arquivos/imagens/graficos_relatorios/relatorio1.PNG" alt="Relatório 1"></p>
+<p><img src="/arquivos/imagens/graficos_relatorios/relatorio2.PNG" alt="Relatório 2"></p>
+<p><img src="/arquivos/imagens/graficos_relatorios/relatorio3.PNG" alt="Relatório 3"></p>
+<p><img src="/arquivos/imagens/graficos_relatorios/relatorio4.PNG" alt="Relatório 4"></p>
+<p><img src="/arquivos/imagens/graficos_relatorios/relatorio5.PNG" alt="Relatório 5"></p>
 
 ### 12.Slides e Apresentação em vídeo.
 #### 12.1 Slides;
