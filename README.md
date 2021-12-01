@@ -22,7 +22,7 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
     * Relatório que informe a quantidade de estacionamentos por bairro, com as seguintes informações: nome do bairro e a quantidade de estacionamentos.<br>
     * Relatório de Empresas e Estacionamentos, incluindo as seguintes informações: id da Empresa, id do Estacionamento.<br>
 
-### 4.TABELA DE DADOS DO SISTEMA
+### 4.TABELA DE DADOS DO SISTEMA (desatualizada)
   <p><a href="/arquivos/tabela_dados_sistema.pdf">Tabela de dados</a></p>
 
 ### 5.PMC
@@ -31,94 +31,91 @@ O Projeto Integrador consiste em um Sistema de Controle de Estacionamento Rotati
 ### 6.MODELO CONCEITUAL
   <p><img src="/arquivos/imagens/modelos/modelo_conceitual.png" alt="Modelo conceitual"></p>
 
-### 7.MODELO LÓGICO (desatualizado)
+### 7.MODELO LÓGICO
   <p><img src="/arquivos/imagens/modelos/modelo_logico.png" alt="Modelo lógico"></p>
 
-### 8.MODELO FÍSICO (desatualizado)
+### 8.MODELO FÍSICO
   <p>
-  
-      DROP TABLE IF EXISTS Aloca;
-      CREATE TABLE Aloca (
-          idAloca int PRIMARY KEY,
-          dscPlaca varchar(12),
-          hr_entrada TIMESTAMP,
-          hr_saidaPrevista TIMESTAMP,
-          hr_saidaEfetiva TIMESTAMP,
-          idEmpresa int,
-          codVaga int
-      );
+    CREATE TABLE ESTACIONAMENTO (
+        idEstac int PRIMARY KEY,
+        nomEstac varchar(45),
+        qtdVagas int,
+        valFixo double,
+        valAcresc double,
+        idEmpresa int
+    );
 
-      DROP TABLE IF EXISTS VAGA;
-      CREATE TABLE VAGA (
-          codVaga int PRIMARY KEY,
-          condVaga bool,
-          idEstac int
-      );
+    CREATE TABLE ENDEREÇO (
+        idEnd int PRIMARY KEY,
+        dscLogradouro varchar(45),
+        numero int,
+        cep varchar(20),
+        idEstac int,
+        idBairro int
+    );
 
-      DROP TABLE IF EXISTS ENDERECO;
-      CREATE TABLE ENDERECO (
-          idEnd int PRIMARY KEY,
-          dscLogradouro varchar(45),
-          numero int,
-          cep varchar(20),
-          idEstac int,
-          idBairro int
-      );
-      DROP TABLE IF EXISTS BAIRRO;
-      CREATE TABLE BAIRRO (
-          idBairro int PRIMARY KEY,
-          nomBairro varchar(45)
-      );
+    CREATE TABLE EMPRESA (
+        idEmpresa int PRIMARY KEY,
+        nomEmpresa varchar(45),
+        dscCpfCnpj varchar(45),
+        Email varchar(45),
+        Senha varchar(45),
+        Telefone char(20)
+    );
 
-      DROP TABLE IF EXISTS ESTACIONAMENTO;
-      CREATE TABLE ESTACIONAMENTO (
-          idEstac int PRIMARY KEY,
-          nomEstac varchar(45),
-          qtdVagas int,
-          idEmpresa int
-      );
+    CREATE TABLE VAGA (
+        codVaga int PRIMARY KEY,
+        condVaga bool,
+        idEstac int
+    );
 
+    CREATE TABLE BAIRRO (
+        idBairro int PRIMARY KEY,
+        nomBairro varchar(45)
+    );
 
-      DROP TABLE IF EXISTS EMPRESA;
-      CREATE TABLE EMPRESA (
-          idEmpresa int PRIMARY KEY,
-          nomEmpresa varchar(45),
-          dscCpfCnpj varchar(45),
-          Email varchar(45),
-          Senha varchar(45)
-      );
-
-
-      ALTER TABLE ESTACIONAMENTO ADD CONSTRAINT FK_ESTACIONAMENTO_2
-          FOREIGN KEY (idEmpresa)
-          REFERENCES EMPRESA (idEmpresa)
-          ON DELETE RESTRICT;
-
-      ALTER TABLE ENDERECO ADD CONSTRAINT FK_ENDERECO_2
-          FOREIGN KEY (idEstac)
-          REFERENCES ESTACIONAMENTO (idEstac)
-          ON DELETE RESTRICT;
-
-      ALTER TABLE ENDERECO ADD CONSTRAINT FK_ENDERECO_3
-          FOREIGN KEY (idBairro)
-          REFERENCES BAIRRO (idBairro)
-          ON DELETE RESTRICT;
-
-      ALTER TABLE VAGA ADD CONSTRAINT FK_VAGA_2
-          FOREIGN KEY (idEstac)
-          REFERENCES ESTACIONAMENTO (idEstac)
-          ON DELETE RESTRICT;
-
-      ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_2
-          FOREIGN KEY (idEmpresa)
-          REFERENCES EMPRESA (idEmpresa)
-          ON DELETE SET NULL;
-
-      ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_3
-          FOREIGN KEY (codVaga)
-          REFERENCES VAGA (codVaga)
-          ON DELETE SET NULL;
-  </p>
+    CREATE TABLE Aloca (
+        idEmpresa int,
+        codVaga int,
+        idAloca int PRIMARY KEY,
+        hr_entrada TIMESTAMP,
+        dscPlaca varchar(10),
+        hr_saidaEfetiva TIMESTAMP,
+        nomCliente varchar(45),
+        imgCarro blob,
+        valTotal DOUBLE
+    );
+    
+    ALTER TABLE ESTACIONAMENTO ADD CONSTRAINT FK_ESTACIONAMENTO_2
+        FOREIGN KEY (idEmpresa)
+        REFERENCES EMPRESA (idEmpresa)
+        ON DELETE RESTRICT;
+    
+    ALTER TABLE ENDEREÇO ADD CONSTRAINT FK_ENDEREÇO_2
+        FOREIGN KEY (idEstac)
+        REFERENCES ESTACIONAMENTO (idEstac)
+        ON DELETE RESTRICT;
+    
+    ALTER TABLE ENDEREÇO ADD CONSTRAINT FK_ENDEREÇO_3
+        FOREIGN KEY (idBairro)
+        REFERENCES BAIRRO (idBairro)
+        ON DELETE RESTRICT;
+    
+    ALTER TABLE VAGA ADD CONSTRAINT FK_VAGA_2
+        FOREIGN KEY (idEstac)
+        REFERENCES ESTACIONAMENTO (idEstac)
+        ON DELETE RESTRICT;
+    
+    ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_2
+        FOREIGN KEY (idEmpresa)
+        REFERENCES EMPRESA (idEmpresa)
+        ON DELETE SET NULL;
+    
+    ALTER TABLE Aloca ADD CONSTRAINT FK_Aloca_3
+        FOREIGN KEY (codVaga)
+        REFERENCES VAGA (codVaga)
+        ON DELETE SET NULL;
+      </p>
 
 ### 9.INSERT APLICADO NAS TABELAS DO BANCO DE DADOS (desatualizado)
   <p>
